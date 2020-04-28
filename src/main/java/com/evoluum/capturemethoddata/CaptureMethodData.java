@@ -1,6 +1,6 @@
 package com.evoluum.capturemethoddata;
 
 public class CaptureMethodData {
-	public String mode() {return "hello world";};
+	public static String mode() {return "hello world";};
 }
 
