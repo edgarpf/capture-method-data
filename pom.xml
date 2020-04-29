@@ -16,8 +16,6 @@
 	<version>1.0.4-RELEASE</version>
 	<name>capture-method-data</name>
 
-	<description>Biblioteca com a annotation @CaptureMethodData que envia params/retorno de métodos para o APM.</description>
-
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.SR3</spring-cloud.version>
@@ -55,48 +53,4 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-    <build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <executions>
-                <execution>
-                    <id>default-compile</id>
-                    <phase>none</phase>
-                </execution>
-            </executions>
-        </plugin>
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>aspectj-maven-plugin</artifactId>
-            <version>1.9</version>
-            <configuration>
-                <aspectLibraries>
-                    <aspectLibrary>
-                        <groupId>com.evoluum.capturemethoddata</groupId>
-	                    <artifactId>capture-method-data</artifactId>
-                    </aspectLibrary>
-                </aspectLibraries>
-            </configuration>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>compile</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
-
-	<!-- <build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build> -->
 </project>

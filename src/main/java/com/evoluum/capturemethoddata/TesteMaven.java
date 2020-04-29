@@ -1,5 +1,5 @@
 package com.evoluum.capturemethoddata;
 
 public class TesteMaven {
-	public static void metodo1() {};
+	public static void metodo2() {};
 }
