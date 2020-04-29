@@ -1,6 +1,13 @@
 package com.evoluum.capturemethoddata;
 
-public class CaptureMethodData {
-	public static String mode() {return "hello world";};
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface CaptureMethodData {
+	public String mode() default CaptureMethodValues.ALL;
 }
 
