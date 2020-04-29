@@ -16,7 +16,7 @@
 	<version>1.0.4-RELEASE</version>
 	<name>capture-method-data</name>
 
-	<description>Biblioteca com a annotation @CaptureMethodData que envia params/retorno de métodos para o APM.</description>
+	<description>Biblioteca com a annotation @CaptureMethodData que envia params/retorno de métodos para o Elastic APM.</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -55,12 +55,4 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<!-- <build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>  -->
 </project>
