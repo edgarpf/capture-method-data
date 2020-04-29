@@ -56,6 +56,41 @@
 		</dependencies>
 	</dependencyManagement>
 
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>default-compile</id>
+                    <phase>none</phase>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>aspectj-maven-plugin</artifactId>
+            <version>1.9</version>
+            <configuration>
+                <aspectLibraries>
+                    <aspectLibrary>
+                        <groupId>com.evoluum.capturemethoddata</groupId>
+	                    <artifactId>capture-method-data</artifactId>
+                    </aspectLibrary>
+                </aspectLibraries>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>compile</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+
 	<!-- <build>
 		<plugins>
 			<plugin>
