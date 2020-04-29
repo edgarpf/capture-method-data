@@ -1,4 +1,4 @@
-package com.evoluum.elasticcapturemethoddata;
+package com.klabs.elasticcapturemethoddata;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

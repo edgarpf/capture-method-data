@@ -1,4 +1,4 @@
-package com.evoluum.elasticcapturemethoddata.annotation;
+package com.klabs.elasticcapturemethoddata.annotation;
 
 public abstract class ElasticCaptureMethodValues {
 	public static final String RESPONSE = "response";

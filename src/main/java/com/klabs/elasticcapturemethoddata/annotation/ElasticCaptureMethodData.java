@@ -1,4 +1,4 @@
-package com.evoluum.elasticcapturemethoddata.annotation;
+package com.klabs.elasticcapturemethoddata.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
