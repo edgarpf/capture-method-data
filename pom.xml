@@ -11,10 +11,10 @@
 		<relativePath />
 	</parent>
 
-	<groupId>com.evoluum.capturemethoddata</groupId>
-	<artifactId>capture-method-data</artifactId>
+	<groupId>com.evoluum.elasticcapturemethoddata</groupId>
+	<artifactId>elastic-capture-method-data</artifactId>
 	<version>1.0.4-RELEASE</version>
-	<name>capture-method-data</name>
+	<name>elastic-capture-method-data</name>
 
 	<description>Biblioteca com a annotation @CaptureMethodData que envia params/retorno de métodos para o Elastic APM.</description>
 

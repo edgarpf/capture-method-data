@@ -1,4 +1,4 @@
-package com.evoluum.capturemethoddata.annotation;
+package com.evoluum.elasticcapturemethoddata.annotation;
 
 
 
@@ -6,8 +6,6 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.CodeSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +19,9 @@ import co.elastic.apm.api.Span;
 public class CaptureMethodDataAspect {
 
 	public static final String METHOD_RESPONSE = "methodResponse";
-	Logger logger = LoggerFactory.getLogger(CaptureMethodDataAspect.class);
 
 	@AfterReturning(pointcut = "@annotation(captureMethodData)", returning = "returnValue")
-	public void sendMethodData(JoinPoint joinPoint, Object returnValue, CaptureMethodData captureMethodData) {
-		logger.info("entrou no metodo send");
+	public void sendMethodData(JoinPoint joinPoint, Object returnValue, ElasticCaptureMethodData captureMethodData) {
 		CodeSignature codeSignature = (CodeSignature) joinPoint.getSignature();
 		
 		if (isDataInconsistent(returnValue, captureMethodData, codeSignature)) {
@@ -34,11 +30,11 @@ public class CaptureMethodDataAspect {
 
 		Span span = generateSpan(returnValue, codeSignature);
 
-		if (!captureMethodData.mode().equals(CaptureMethodValues.RESPONSE)) {
+		if (!captureMethodData.mode().equals(ElasticCaptureMethodValues.RESPONSE)) {
 			sendMethodParameters(joinPoint, codeSignature, span);
 		}
 
-		if (!captureMethodData.mode().equals(CaptureMethodValues.PARAMS) && returnValue != null) {
+		if (!captureMethodData.mode().equals(ElasticCaptureMethodValues.PARAMS) && returnValue != null) {
 			sendMethodResponse(returnValue, span);
 		}
 
@@ -48,14 +44,14 @@ public class CaptureMethodDataAspect {
 
 	}
 
-	private boolean isDataInconsistent(Object returnValue, CaptureMethodData captureMethodData,
+	private boolean isDataInconsistent(Object returnValue, ElasticCaptureMethodData captureMethodData,
 			CodeSignature codeSignature) {
 		boolean isInconsistentResponseMode = returnValue == null
-				&& captureMethodData.mode().equals(CaptureMethodValues.RESPONSE);
+				&& captureMethodData.mode().equals(ElasticCaptureMethodValues.RESPONSE);
 		boolean isInconsistentParamsMode = codeSignature.getParameterNames().length == 0
-				&& captureMethodData.mode().equals(CaptureMethodValues.PARAMS);
+				&& captureMethodData.mode().equals(ElasticCaptureMethodValues.PARAMS);
 		boolean isInconsistentAllMode = returnValue == null && codeSignature.getParameterNames().length == 0
-				&& captureMethodData.mode().equals(CaptureMethodValues.ALL);
+				&& captureMethodData.mode().equals(ElasticCaptureMethodValues.ALL);
 		
 		return isInconsistentResponseMode || isInconsistentParamsMode || isInconsistentAllMode;
 	}
@@ -66,7 +62,6 @@ public class CaptureMethodDataAspect {
 		if (!(returnValue instanceof ResponseEntity)) {
 			span = ElasticApm.currentTransaction().startSpan();
 			span.setName(codeSignature.getDeclaringTypeName() + "#" + codeSignature.getName());
-			logger.info("gerou span");
 		}
 
 		return span;
@@ -76,10 +71,10 @@ public class CaptureMethodDataAspect {
 		for (int i = 0; i < codeSignature.getParameterNames().length; i++) {
 			if (span == null) {
 				ElasticApm.currentTransaction().addLabel(
-						CaptureMethodValues.PARAMS + "_" + codeSignature.getParameterNames()[i],
+						ElasticCaptureMethodValues.PARAMS + "_" + codeSignature.getParameterNames()[i],
 						new Gson().toJson(joinPoint.getArgs()[i]));
 			} else {
-				span.addLabel(CaptureMethodValues.PARAMS + "_" + codeSignature.getParameterNames()[i],
+				span.addLabel(ElasticCaptureMethodValues.PARAMS + "_" + codeSignature.getParameterNames()[i],
 						new Gson().toJson(joinPoint.getArgs()[i]));
 			}
 		}

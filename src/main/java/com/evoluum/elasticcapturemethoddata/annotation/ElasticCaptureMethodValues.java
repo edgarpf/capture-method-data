@@ -1,11 +1,11 @@
-package com.evoluum.capturemethoddata.annotation;
+package com.evoluum.elasticcapturemethoddata.annotation;
 
-public abstract class CaptureMethodValues {
+public abstract class ElasticCaptureMethodValues {
 	public static final String RESPONSE = "response";
 	public static final String PARAMS = "parameters";
 	public static final String ALL = "all";
 	
-	private CaptureMethodValues() {
+	private ElasticCaptureMethodValues() {
 		
 	}
 }
