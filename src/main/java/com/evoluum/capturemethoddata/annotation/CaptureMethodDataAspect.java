@@ -1,4 +1,4 @@
-package com.evoluum.capturemethoddata;
+package com.evoluum.capturemethoddata.annotation;
 
 
 
