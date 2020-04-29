@@ -11,7 +11,7 @@
 		<relativePath />
 	</parent>
 
-	<groupId>com.evoluum.elasticcapturemethoddata</groupId>
+	<groupId>com.klabs.elasticcapturemethoddata</groupId>
 	<artifactId>elastic-capture-method-data</artifactId>
 	<version>1.0.4-RELEASE</version>
 	<name>elastic-capture-method-data</name>
