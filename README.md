@@ -36,7 +36,7 @@ In your Spring Boot Rest Controller you can use:
 * */
 @ElasticCaptureMethodData(mode = "response")
 public ResponseEntity myMethod() {
-	//your code here
+   //your code here
 }
 ```
 
