@@ -23,6 +23,16 @@ and
 </repositories>
 ```
 
+and 
+
+```java
+@SpringBootApplication
+@EnableElasticCaptureMethodData
+public class Application{
+  //code here
+}
+```
+
 In your Spring Boot Rest Controller you can use:
 
 ```java
