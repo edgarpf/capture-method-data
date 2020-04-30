@@ -1,5 +1,5 @@
 # elastic-capture-method-data
-A Java library that must be used with Spring Boot and APM agent. It will send spans to an APM server to log methods parameters and/or returns as labels.
+A Java library that must be used with Spring Boot and APM agent. It will send spans to an APM server to log methods parameters and/or responses as labels.
 # Usage
 
 In your pom.xml use:
