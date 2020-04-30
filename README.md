@@ -23,7 +23,7 @@ and
 </repositories>
 ```
 
-and 
+and in your main class:
 
 ```java
 @SpringBootApplication
